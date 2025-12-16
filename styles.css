@@ -391,6 +391,136 @@ header {
     padding: 0 1rem;
 }
 
+/* Container de Ícones Sociais */
+.social-icons-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+/* Botões de Ícones Sociais */
+.social-icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    /* Glassmorphism com azul marcante */
+    background: linear-gradient(135deg, 
+        rgba(61, 107, 163, 0.4) 0%, 
+        rgba(0, 212, 255, 0.35) 50%,
+        rgba(61, 107, 163, 0.4) 100%);
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    /* Borda azul com gradiente sutil */
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    border-top: 1px solid rgba(0, 212, 255, 0.6);
+    border-left: 1px solid rgba(0, 212, 255, 0.5);
+    /* Texto branco com excelente contraste */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    /* Sombras múltiplas com glow azul */
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2), 
+                0 2px 8px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -1px 0 rgba(0, 212, 255, 0.2),
+                0 0 0 rgba(0, 212, 255, 0);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho/shimmer que se move (como vidro) */
+.social-icon-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, 
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 25%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.1) 75%,
+        transparent 100%);
+    animation: glassShimmer 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Efeito de reflexo interno (vidro) */
+.social-icon-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        transparent 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.social-icon-button:hover {
+    /* Aumenta opacidade e azul no hover */
+    background: linear-gradient(135deg, 
+        rgba(61, 107, 163, 0.5) 0%, 
+        rgba(0, 212, 255, 0.45) 50%,
+        rgba(61, 107, 163, 0.5) 100%);
+    /* Aumenta blur no hover */
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    /* Borda azul mais visível e brilhante */
+    border-color: rgba(0, 212, 255, 0.6);
+    border-top: 1px solid rgba(0, 212, 255, 0.8);
+    border-left: 1px solid rgba(0, 212, 255, 0.7);
+    /* Sombra levemente mais forte com glow azul */
+    box-shadow: 0 8px 30px rgba(0, 212, 255, 0.3), 
+                0 4px 12px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                inset 0 -1px 0 rgba(0, 212, 255, 0.3),
+                0 0 25px rgba(0, 212, 255, 0.2);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.social-icon-button:hover::before {
+    animation-duration: 2s;
+}
+
+.social-icon-button:hover::after {
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%);
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2),
+                 0 0 10px rgba(255, 255, 255, 0.1);
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease;
+}
+
+.social-icon-button:hover .social-icon {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+    transform: scale(1.1);
+}
+
 /* Carrossel de Serviços */
 .services-carousel-section {
     padding: 2rem 0;
@@ -516,9 +646,8 @@ header {
     max-width: 100%;
 }
 
+.social-icons-container { animation-delay: 0.5s; }
 .button-container:nth-child(2) { animation-delay: 0.6s; }
-.button-container:nth-child(3) { animation-delay: 0.7s; }
-.button-container:nth-child(4) { animation-delay: 0.8s; }
 
 .main-button {
     display: inline-flex;
@@ -1214,6 +1343,21 @@ footer {
         margin-right: auto;
     }
     
+    .social-icons-container {
+        gap: 0.8rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .social-icon-button {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .social-icon {
+        width: 22px;
+        height: 22px;
+    }
+    
     .main-button {
         padding: 0.9rem 1.5rem;
         font-size: 0.9rem;
@@ -1313,6 +1457,21 @@ footer {
         padding: 0 1rem;
         margin-left: auto;
         margin-right: auto;
+    }
+    
+    .social-icons-container {
+        gap: 0.7rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .social-icon-button {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .social-icon {
+        width: 20px;
+        height: 20px;
     }
 
     .main-button {
